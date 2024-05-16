@@ -67,5 +67,5 @@ def init_burning_ship (width,height,iters):
 
 width, height = 1000, 1000
 iters = 150
-#init_mandelbrot(width, height, iters)
-init_burning_ship(width,height,iters)
+init_mandelbrot(width, height, iters)
+#init_burning_ship(width,height,iters)
