@@ -25,7 +25,7 @@ def draw_mandelbrot(xmin, xmax, ymin, ymax, width, height, iter):
 def init_mandelbrot(width,height,iters):
     xmin, xmax, ymin, ymax = -2.0, 0.6, -1.2, 1.2
     image = draw_mandelbrot(xmin, xmax, ymin, ymax, width, height, iters)
-    plt.imshow(image, extent=[xmin, xmax, ymin, ymax], cmap='twilight_shifted')
+    plt.imshow(image, extent=(xmin, xmax, ymin, ymax), cmap='twilight_shifted')
     plt.colorbar()
     plt.title('The Mandelbrot Set')
     plt.xlabel('Real numbers')
@@ -57,7 +57,7 @@ def draw_burning_ship(xmin, xmax, ymin, ymax, width, height, iter):
 def init_burning_ship (width,height,iters):
     xmin, xmax, ymin, ymax = -2.0, 1.2, -1.8, 0.8
     image = draw_burning_ship(xmin, xmax, ymin, ymax, width, height, iters)
-    plt.imshow(image, extent=[xmin, xmax, ymin, ymax], cmap='hot')
+    plt.imshow(image, extent=(xmin, xmax, ymin, ymax), cmap='hot')
     plt.colorbar()
     plt.title('The Burning Ship')
     plt.xlabel('Real numbers')
@@ -67,5 +67,5 @@ def init_burning_ship (width,height,iters):
 
 width, height = 1000, 1000
 iters = 150
-init_mandelbrot(width, height, iters)
-#init_burning_ship(width,height,iters)
+#init_mandelbrot(width, height, iters)
+init_burning_ship(width,height,iters)
