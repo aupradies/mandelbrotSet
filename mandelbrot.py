@@ -65,7 +65,7 @@ def init_burning_ship (width,height,iters):
     plt.show()
 
 
-width, height = 500, 500
+width, height = 1000, 1000
 iters = 150
 init_mandelbrot(width, height, iters)
 #init_burning_ship(width,height,iters)
