@@ -10,7 +10,6 @@ def mandelbrot(c, iter_count):
         z = z * z + c
     return iter_count
 
-
 def draw_mandelbrot(xmin, xmax, ymin, ymax, width, height, iter):
     x = np.linspace(xmin, xmax, width)
     y = np.linspace(ymin, ymax, height)
@@ -21,13 +20,41 @@ def draw_mandelbrot(xmin, xmax, ymin, ymax, width, height, iter):
             mset[i][j] = mandelbrot(c, iter)
     return mset
 
-
 def init_mandelbrot(width,height,iters):
     xmin, xmax, ymin, ymax = -2.0, 0.6, -1.2, 1.2
     image = draw_mandelbrot(xmin, xmax, ymin, ymax, width, height, iters)
     plt.imshow(image, extent=(xmin, xmax, ymin, ymax), cmap='twilight_shifted')
     plt.colorbar()
     plt.title('The Mandelbrot Set')
+    plt.xlabel('Real numbers')
+    plt.ylabel('Imaginary numbers')
+    plt.show()
+
+
+def julia(z, iter_count):
+    c = complex(0, 0.7)
+    for n in range(iter_count):
+        if abs(z) > 2:
+            return n
+        z = z * z + c
+    return iter_count
+
+def draw_julia(xmin, xmax, ymin, ymax, width, height, iter):
+    x = np.linspace(xmin, xmax, width)
+    y = np.linspace(ymin, ymax, height)
+    mset = np.zeros((height,width))
+    for i in range(height):
+        for j in range(width):
+            c = complex(x[j], y[i])
+            mset[i][j] = julia(c, iter)
+    return mset
+
+def init_julia(width,height,iters):
+    xmin, xmax, ymin, ymax = -1.2, 1.2, -1.2, 1.2
+    image = draw_julia(xmin, xmax, ymin, ymax, width, height, iters)
+    plt.imshow(image, extent=(xmin, xmax, ymin, ymax), cmap='seismic')
+    plt.colorbar()
+    plt.title('The Julia Set')
     plt.xlabel('Real numbers')
     plt.ylabel('Imaginary numbers')
     plt.show()
@@ -41,7 +68,6 @@ def burning_ship(c1, c2, iter_count):
             return n + 1
     return 0
 
-
 def draw_burning_ship(xmin, xmax, ymin, ymax, width, height, iter):
     x = np.linspace(xmin, xmax, width)
     y = np.linspace(ymin, ymax, height)
@@ -52,7 +78,6 @@ def draw_burning_ship(xmin, xmax, ymin, ymax, width, height, iter):
             c2 = y[i]
             mset[i][j] = burning_ship(c1, c2, iter)
     return mset
-
 
 def init_burning_ship (width,height,iters):
     xmin, xmax, ymin, ymax = -2.0, 1.2, -1.8, 0.8
@@ -65,7 +90,8 @@ def init_burning_ship (width,height,iters):
     plt.show()
 
 
-width, height = 1000, 1000
-iters = 150
+width, height = 500, 500
+iters = 200
+init_julia(width, height, iters)
 init_mandelbrot(width, height, iters)
-#init_burning_ship(width,height,iters)
+init_burning_ship(width,height,iters)
